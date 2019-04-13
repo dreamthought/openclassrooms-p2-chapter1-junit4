@@ -16,16 +16,16 @@ public class ConversionCalculatorTest {
 
     @Test
     @Category({Categories.FahrenheitTests.class, Categories.TemperatureTests.class})
-    public void celciusToFahrenheit_returnsAFahrenheitTempurature_whenCelciusIsPositive() {
-        Double actualFahrenheit = calculatorUnderTest.celciusToFahrenheit(0.0 );
+    public void celsiusToFahrenheit_returnsAFahrenheitTempurature_whenCelsiusIsPositive() {
+        Double actualFahrenheit = calculatorUnderTest.celsiusToFahrenheit(0.0 );
         assertThat( actualFahrenheit, is(equalTo(32.0)) );
     }
 
     @Test
     @Category({Categories.TemperatureTests.class})
-    public void fahrenheitToCelcius() {
-        Double actualCelcius = calculatorUnderTest.fahrenheitToCelcius(32.0);
-        assertThat( actualCelcius, is(equalTo(0.0)));
+    public void fahrenheitToCelsius() {
+        Double actualCelsius = calculatorUnderTest.fahrenheitToCelsius(32.0);
+        assertThat( actualCelsius, is(equalTo(0.0)));
     }
 
     @Test
