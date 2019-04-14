@@ -3,7 +3,7 @@ package com.openclassrooms.testing;
 /**
  * Converts between different types of units.
  */
-public class ConversionCalculator {
+public class ConversionCalculator implements ConversionCalculatorInteface {
 
     // constants for temperature conversion
     private static final double BASE_FAHRENHEIT = 32.0;
@@ -20,6 +20,7 @@ public class ConversionCalculator {
      * @param celsiusTemperature to convert
      * @return fahrenheit temperature.
      */
+    @Override
     public Double celsiusToFahrenheit(Double celsiusTemperature) {
         return (celsiusTemperature * CELSIUS_FAHRENHEIT_CONVERSION_FACTOR) + BASE_FAHRENHEIT;
     }
@@ -29,6 +30,7 @@ public class ConversionCalculator {
      * @param fahrenheitTemperature to convert
      * @return
      */
+    @Override
     public Double fahrenheitToCelsius(Double fahrenheitTemperature) {
         return (fahrenheitTemperature - BASE_FAHRENHEIT) * CELSIUS_FAHRENHEIT_CONVERSION_FACTOR;
     }
@@ -38,6 +40,7 @@ public class ConversionCalculator {
      * @param litreVolume to convert
      * @return volume in gallons
      */
+    @Override
     public Double litresToGallons(Double litreVolume) {
         return Math.ceil(litreVolume * LITRE_TO_GALLON_MULTIPLIER);
     }
@@ -47,6 +50,7 @@ public class ConversionCalculator {
      * @param radius of the circle
      * @return area of the circle in the same unit
      */
+    @Override
     public Double radiusToAreaOfCircle(Double radius) {
         return Math.PI * Math.pow(radius, POWER_OF_RADIUS);
 
