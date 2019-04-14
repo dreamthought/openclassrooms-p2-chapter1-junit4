@@ -1,10 +1,17 @@
 package com.openclassrooms.testing;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Part 2 - Chapter 1
@@ -12,8 +19,18 @@ import static org.hamcrest.MatcherAssert.assertThat;
  *
  * @author Raf Gemmail
  */
+@RunWith(MockitoJUnitRunner.class)
 public class CalculatorTest {
-    private Calculator calculatorUnderTest = new Calculator();
+
+    @Mock
+    ConversionCalculator conversionCalculatorTestDouble;
+
+    Calculator calculatorUnderTest;
+
+    @Before
+    public void setUp() {
+        calculatorUnderTest = new Calculator(conversionCalculatorTestDouble);
+    }
 
     // Checkout this site to see other popular naming conventions
     // https://dzone.com/articles/7-popular-unit-test-naming
@@ -36,5 +53,14 @@ public class CalculatorTest {
         Double expected = -2.0;
         Double difference = calculatorUnderTest.subtract(3.0, 5.0);
         assertThat(difference, is(equalTo(expected)));
+    }
+
+    @Test
+    public void convert_callsTheConverter_WhenRequestingRadiusToArea() throws Exception {
+        Double radius = 1.0;
+        when(conversionCalculatorTestDouble.radiusToAreaOfCircle(radius)).thenReturn(Math.PI);
+        calculatorUnderTest.convert(ConversionType.RADIUS_TO_AREA, radius);
+        // check we called it
+        verify(conversionCalculatorTestDouble).radiusToAreaOfCircle(radius);
     }
 }
