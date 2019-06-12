@@ -44,7 +44,7 @@ public class ConversionCalculatorTest {
 
     //@Ignore("Meters to KM disabled as this has not been written")
     @Test
-    public void metersToKiloMeters_returns1Km_whenWeConvertAHundredMeters() {
+    public void metersToKiloMeters_returns1Km_whenWeConvertAThousandMeters() {
         Double expected = 1.0;
         fail("Not written yet");
     }
